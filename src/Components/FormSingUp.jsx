@@ -21,6 +21,10 @@ function FormSingUp({handleSubmit}) {
     }
   })
 
+  function validarNombre(nombre) {
+    console.log(nombre)
+  }
+
   return (
     <form onSubmit={(e) => {
       e.preventDefault()
