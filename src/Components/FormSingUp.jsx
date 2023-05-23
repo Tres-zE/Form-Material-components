@@ -14,6 +14,13 @@ function FormSingUp({handleSubmit}) {
   const [promo, setPromo] = useState(true)
   const [novedades, setNovedades] = useState(false)
 
+  const [error, setError] = useState({
+    name: {
+      error: false,
+      message: "Deben ser al menos 3 caracteres"
+    }
+  })
+
   return (
     <form onSubmit={(e) => {
       e.preventDefault()
@@ -29,6 +36,8 @@ function FormSingUp({handleSubmit}) {
           setName(e.target.value)
         }
         value={name}
+        error={error.name.error}
+        helperText={error.name.message ? error.name.error : ""}
       />
 
       <TextField
