@@ -22,8 +22,13 @@ function FormSingUp({handleSubmit}) {
   })
 
   function validarNombre(nombre) {
-    console.log(nombre)
+    if(nombre.length>=3){
+      return {name:{error: false, message: ""} }
+    }else{
+      return {name:{error: true, message: "Deben ser al menos 3 caracteres"}
+    }
   }
+  }  
 
   return (
     <form onSubmit={(e) => {
@@ -42,6 +47,10 @@ function FormSingUp({handleSubmit}) {
         value={name}
         error={error.name.error}
         helperText={error.name.message ? error.name.error : ""}
+
+        onBlur={(e) => {
+          setError(validarNombre(e.target.value))
+        }}
       />
 
       <TextField
@@ -100,5 +109,6 @@ function FormSingUp({handleSubmit}) {
     </form>
   )
 }
+
 
 export default FormSingUp
